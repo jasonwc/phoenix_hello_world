@@ -70,6 +70,6 @@ config :phoenix, :plug_init_mode, :runtime
 config :phoenix_hello_world, PhoenixHelloWorld.Repo,
   username: System.get_env("PG_USERNAME") || "",
   database: System.get_env("DATABASE_NAME") || "phoenix_hello_world_dev",
-  host: System.get_env("PG_HOST") || "",
+  hostname: System.get_env("PG_HOST") || "",
   port: System.get_env("PG_PORT") || "",
   pool_size: 10
