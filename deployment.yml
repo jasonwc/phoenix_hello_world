@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: phoenix-hello-world-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: phoenix-hello-world
+    spec:
+      containers:
+        - name: phoenix-hello-world
+          image: phoenix_hello_world:third_attempt
+          ports:
+            - containerPort: 8000
+          args: ["foreground"]
+          env:
+          - name: PORT
+            value: "4000"
+          - name: HOST
+            value: localhost
+          - name: SECRET_KEY_BASE
+            value: highlysecretkey
+          - name: DB_USERNAME
+            value: postgres
+          - name: DB_NAME
+            value: phoenix_hello_world_dev
+          - name: DB_HOST
+            value: postgres.default.svc.cluster.local
+          - name: DB_PORT
+            value: "5432"
